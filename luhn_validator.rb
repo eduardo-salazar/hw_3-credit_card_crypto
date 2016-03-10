@@ -4,10 +4,9 @@ module LuhnValidator
   # assumes: a local String called 'number' exists
   # returns: true/false whether last digit is correct
   def validate_checksum
-
-    nums_a = number.to_s.chars.map(&:to_i)
     sum = 0
-    nums_a.reverse.map.with_index do |d, i|
+    nums_a = number.reverse.to_s.chars.map.with_index do |str, i| 
+    	d = str.to_i
     	if i.odd?
     		value = d * 2
     		sum += value >= 10 ? value - 9 : value  
