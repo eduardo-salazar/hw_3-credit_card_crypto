@@ -9,7 +9,8 @@ module LuhnValidator
     sum = 0
     nums_a.reverse.map.with_index do |d, i|
     	if i.odd?
-    		sum += (d * 2).to_s.chars.map!(&:to_i).reduce(:+)
+    		value = d * 2
+    		sum += value >= 10 ? value - 9 : value  
     	else
     		sum += d
     	end
