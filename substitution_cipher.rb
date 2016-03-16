@@ -26,8 +26,8 @@ module SubstitutionCipher
     #   key: Fixnum (integer)
     # Returns: String
     def self.encrypt(document, key)
-      permutation_map = (32..126).to_a.shuffle(random: Random.new(key))
-      document.to_s.chars.map { |e| permutation_map[e.ord - 32].chr }.join
+      permutation_map = (0..127).to_a.shuffle(random: Random.new(key))
+      document.to_s.chars.map { |e| permutation_map[e.ord].chr }.join
     end
 
     # Decrypts String document using integer key
@@ -36,8 +36,8 @@ module SubstitutionCipher
     #   key: Fixnum (integer)
     # Returns: String
     def self.decrypt(document, key)
-      permutation_map = (32..126).to_a.shuffle(random: Random.new(key))
-      document.chars.map { |e| (permutation_map.index(e.ord) + 32).chr }.join
+      permutation_map = (0..127).to_a.shuffle(random: Random.new(key))
+      document.chars.map { |e| permutation_map.index(e.ord).chr }.join
     end
   end
 end
