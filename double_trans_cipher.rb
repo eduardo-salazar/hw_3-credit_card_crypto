@@ -26,9 +26,9 @@ module DoubleTranspositionCipher
     # generate matrix and map
     de_mtx, row_map, col_map = generate_mapping(ciphertext, key)
     # row permutation
-    row = de_mtx.map.with_index { |_, index| de_mtx[col_map.index(index)]}
+    row = de_mtx.map.with_index { |_, index| de_mtx[col_map.index(index)] }
     row.map do |col|
-      col.map.with_index { |_, index| col[row_map.index(index)]}
+      col.map.with_index { |_, index| col[row_map.index(index)] }
     end.join.delete("\t")
   end
 end
