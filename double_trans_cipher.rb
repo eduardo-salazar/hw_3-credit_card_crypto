@@ -8,7 +8,7 @@ module DoubleTranspositionCipher
     mtx = str.ljust(row_len * col_len, "\t").chars.each_slice(row_len).to_a
     # generate map
     row_map = (0...row_len).to_a.shuffle(random: Random.new(key))
-    col_map = (0...col_len).to_a.shuffle(random: Random.new(key))
+    col_map = (0...col_len).to_a.shuffle(random: Random.new(key + 1))
     [mtx, row_map, col_map]
   end
 
