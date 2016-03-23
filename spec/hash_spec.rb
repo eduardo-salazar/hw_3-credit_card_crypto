@@ -10,28 +10,33 @@ card_details = [
 
 cards = card_details.map { |c| CreditCard.new(c[:num], c[:exp], c[:name], c[:net]) }
 
-describe 'Test hashing requirements' do
-  describe 'Test regular hashing' do
-    describe 'Check hashes are consistently produced' do
-      # TODO: Check that each card produces the same hash if hashed repeatedly
+cards.each do |card|
+  describe 'Test hashing requirements' do
+    describe 'Test regular hashing' do
+      it 'shoudl check hashes are consistently produced' do
+        card.hash.wont_be_nil
+        card.hash.wont_equal card.to_s
+        card.hash.must_equal card.hash
+      end
     end
 
-    describe 'Check for unique hashes' do
-      # TODO: Check that each card produces a different hash than other cards
-    end
-  end
-
-  describe 'Test cryptographic hashing' do
-    describe 'Check hashes are consistently produced' do
-      # TODO: Check that each card produces the same hash if hashed repeatedly
-    end
-
-    describe 'Check for unique hashes' do
-      # TODO: Check that each card produces a different hash than other cards
-    end
-
-    describe 'Check regular hash not same as cryptographic hash' do
-      # TODO: Check that each card's hash is different from its hash_secure
-    end
+    #   describe 'Check for unique hashes' do
+    #     # TODO: Check that each card produces a different hash than other cards
+    #   end
+    # end
+    #
+    # describe 'Test cryptographic hashing' do
+    #   describe 'Check hashes are consistently produced' do
+    #     # TODO: Check that each card produces the same hash if hashed repeatedly
+    #   end
+    #
+    #   describe 'Check for unique hashes' do
+    #     # TODO: Check that each card produces a different hash than other cards
+    #   end
+    #
+    #   describe 'Check regular hash not same as cryptographic hash' do
+    #     # TODO: Check that each card's hash is different from its hash_secure
+    #   end
+    # end
   end
 end
